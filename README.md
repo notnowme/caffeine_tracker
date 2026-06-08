@@ -90,7 +90,7 @@ dart run build_runner build --delete-conflicting-outputs
 ### 환경 변수 (.env)
 
 프로젝트 루트에 `.env` 파일을 생성하고 Supabase 정보를 입력합니다.
-현재 supabase SQL 파일은 제공되지 않습니다.
+> 현재 supabase SQL 파일은 제공되지 않습니다.
 
 ```env
 SUPABASE_URL=your-supabase-url
@@ -117,4 +117,4 @@ flutter test
 - 위젯 테스트: 공통 위젯 및 화면 단위 렌더링/상호작용
 - 통합 테스트: `test/integration/app_test.dart` (인메모리 SQLite + 실제 Riverpod Provider)
 
-자세한 내용은 [`.cluade/test_summary.md`](.cluade/test_summary.md) 참고.
+자세한 내용은 [`.claude/test_summary.md`](.cluade/test_summary.md) 참고.
