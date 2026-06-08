@@ -10,7 +10,6 @@ import 'package:caffeine_tracker/shared/presentation/widgets/category_icon.dart'
 import 'package:caffeine_tracker/shared/presentation/widgets/default_scaffold.dart';
 import 'package:caffeine_tracker/shared/presentation/widgets/list_item_card.dart';
 import 'package:caffeine_tracker/shared/presentation/widgets/sliver_app_bar.dart';
-import 'package:caffeine_tracker/shared/presentation/widgets/toast.dart';
 import 'package:caffeine_tracker/shared/utils/caffeine_calculator.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:fl_chart/fl_chart.dart';
