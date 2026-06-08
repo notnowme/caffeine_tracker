@@ -47,6 +47,7 @@ class _Scaffold extends StatelessWidget {
                       .add();
                   if (context.mounted) {
                     if (result > 0) {
+                      ToastMessage.showTaost(context, '✅ 등록했어요');
                       context.pop();
                     }
                   }

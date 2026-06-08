@@ -181,6 +181,7 @@ class _AddBottomSheet extends ConsumerWidget {
                   .add(product);
               if (context.mounted) {
                 if (result > 0) {
+                  ToastMessage.showTaost(context, '✅ 기록했어요');
                   context.pop();
                 }
               }
