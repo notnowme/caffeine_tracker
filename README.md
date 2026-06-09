@@ -16,6 +16,15 @@
 - **리포트** — 주간/월간/연간 섭취량 차트, 시간대별 섭취 패턴, 목표 초과/이하 요약, 가장 많이 섭취한 카페인
 - **설정** — 내 정보 수정, 데이터 삭제 등
 
+<details>
+  <summary>앱 일부 화면 이미지 보기</summary>
+  
+  ![img01](https://github.com/user-attachments/assets/a0eef41f-b49c-4cd9-ab8c-fd32be3fd02a)
+  ![img02](https://github.com/user-attachments/assets/9d3c702b-3ad7-4040-85f7-9532a0553c8a)
+  ![img03](https://github.com/user-attachments/assets/13049807-f12f-4b6e-989c-dbde63246d2a)
+
+</details>
+
 ## 🧮 카페인 농도 계산 방식
 
 체내 카페인 농도는 **흡수 → 반감기 감소** 모델로 계산합니다.
