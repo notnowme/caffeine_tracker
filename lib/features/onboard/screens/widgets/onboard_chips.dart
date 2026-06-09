@@ -50,14 +50,14 @@ class _Chips extends StatelessWidget {
                     ),
                   ),
                 ),
-                context.horizontalSpace(10),
-                Expanded(
-                  child: ChipCard(
-                    title: '수면 영향',
-                    desc: '취침 전 알림',
-                    icon: Icon(CupertinoIcons.moon, color: AppColors.primary),
-                  ),
-                ),
+                // context.horizontalSpace(10),
+                // Expanded(
+                //   child: ChipCard(
+                //     title: '수면 영향',
+                //     desc: '취침 전 알림',
+                //     icon: Icon(CupertinoIcons.moon, color: AppColors.primary),
+                //   ),
+                // ),
               ],
             ),
           ),

@@ -28,15 +28,7 @@ class _Scaffold extends StatelessWidget {
             context.verticalSpace(36),
             texts,
             const Spacer(),
-            TextButton(
-              onPressed: () {
-                context.pushNamed(OnboardScreen.routeName);
-              },
-              child: Text(
-                '임시 이동 버튼',
-                style: AppFonts.body.copyWith(color: AppColors.primary),
-              ),
-            ),
+
             progress,
             context.verticalSpace(60),
           ],
