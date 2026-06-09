@@ -16,8 +16,8 @@ class _Chips extends StatelessWidget {
               children: [
                 Expanded(
                   child: ChipCard(
-                    title: '음료 라이브러리',
-                    desc: '커피,차',
+                    title: '기본 카페인 목록',
+                    desc: '커피,차 등',
                     icon: Icon(Icons.coffee, color: AppColors.primary),
                   ),
                 ),
