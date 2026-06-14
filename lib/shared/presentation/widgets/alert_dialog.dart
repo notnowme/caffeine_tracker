@@ -12,16 +12,20 @@ class CustomAlertDialog extends StatelessWidget {
     required this.iconColor,
     required this.title,
     required this.body,
-    required this.actionTitle,
-    required this.action,
+    this.actionTitle,
+    this.action,
+    this.confirmText = '취소',
+    this.confirm,
   });
 
   final IconData icon;
   final Color iconColor;
   final String title;
   final String body;
-  final String actionTitle;
-  final VoidCallback action;
+  final String? actionTitle;
+  final VoidCallback? action;
+  final String confirmText;
+  final VoidCallback? confirm;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +63,13 @@ class CustomAlertDialog extends StatelessWidget {
             children: [
               Expanded(
                 child: BounceTapper(
-                  onTap: () => context.pop(),
+                  onTap: () {
+                    if (confirm == null) {
+                      context.pop();
+                      return;
+                    }
+                    confirm!();
+                  },
                   child: Container(
                     padding: context.edgeInsets(vertical: 14),
                     decoration: BoxDecoration(
@@ -68,7 +78,7 @@ class CustomAlertDialog extends StatelessWidget {
                     ),
                     child: Center(
                       child: Text(
-                        '취소',
+                        confirmText,
                         style: AppFonts.body.copyWith(
                           color: AppColors.primary,
                           fontWeight: FontWeight.w800,
@@ -79,27 +89,28 @@ class CustomAlertDialog extends StatelessWidget {
                 ),
               ),
               context.horizontalSpace(12),
-              Expanded(
-                child: BounceTapper(
-                  onTap: action,
-                  child: Container(
-                    padding: context.edgeInsets(vertical: 14),
-                    decoration: BoxDecoration(
-                      color: AppColors.error,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Center(
-                      child: Text(
-                        actionTitle,
-                        style: AppFonts.body.copyWith(
-                          color: AppColors.onPrimary,
-                          fontWeight: FontWeight.w800,
+              if (actionTitle != null)
+                Expanded(
+                  child: BounceTapper(
+                    onTap: action,
+                    child: Container(
+                      padding: context.edgeInsets(vertical: 14),
+                      decoration: BoxDecoration(
+                        color: AppColors.error,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Center(
+                        child: Text(
+                          actionTitle!,
+                          style: AppFonts.body.copyWith(
+                            color: AppColors.onPrimary,
+                            fontWeight: FontWeight.w800,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
             ],
           ),
         ],

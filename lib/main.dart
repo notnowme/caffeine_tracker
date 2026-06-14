@@ -1,6 +1,9 @@
 import 'package:caffeine_tracker/core/db/local_database.dart';
 import 'package:caffeine_tracker/core/routes/routers.dart';
 import 'package:caffeine_tracker/core/supabase/supabase_config.dart';
+import 'package:caffeine_tracker/shared/data/models/error_model.dart';
+import 'package:caffeine_tracker/shared/presentation/widgets/error_app.dart';
+import 'package:caffeine_tracker/shared/presentation/widgets/error_boundery.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,7 +19,17 @@ void main() async {
   try {
     await Future.wait([initSupabase(), LocalDataBase().database]);
   } catch (e) {
-    throw Exception(e);
+    if (e is ErrorModel) {
+      runApp(ErrorApp(error: e));
+    } else {
+      final ErrorModel error = ErrorModel(
+        title: '알 수 없는 에러',
+        message: '예상치 못한 에러가 발생했습니다.',
+        path: '',
+      );
+      runApp(ErrorApp(error: error));
+    }
+    return;
   }
 
   tz.initializeTimeZones();
@@ -50,7 +63,7 @@ class MyApp extends ConsumerWidget {
                 data: MediaQuery.of(
                   context,
                 ).copyWith(textScaler: const TextScaler.linear(1.0)),
-                child: child,
+                child: ErrorBoundery(child: child),
               );
             }
             throw StateError('Wiget is Null');
