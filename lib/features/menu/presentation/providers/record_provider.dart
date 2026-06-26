@@ -6,6 +6,7 @@ import 'package:caffeine_tracker/features/menu/domain/usecases/caffeine_record.d
 import 'package:caffeine_tracker/features/menu/presentation/providers/caffeine_item_provider.dart';
 import 'package:caffeine_tracker/features/report/data/models/report_model.dart';
 import 'package:caffeine_tracker/features/report/data/models/report_with_drink_model.dart';
+import 'package:caffeine_tracker/shared/utils/extensions.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'record_provider.g.dart';
@@ -24,6 +25,7 @@ RecordRepositoryImpl recordRepositoryImpl(Ref ref) {
 class RecentRecordNotifier extends _$RecentRecordNotifier {
   @override
   Future<List<DrinkRecordWithItem>> build() async {
+    ref.cacheFor(const Duration(seconds: 30));
     return await ref.read(recordRepositoryImplProvider).getRecordsWithItem();
   }
 }

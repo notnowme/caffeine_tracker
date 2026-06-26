@@ -86,7 +86,7 @@ final class RecentRecordNotifierProvider
 }
 
 String _$recentRecordNotifierHash() =>
-    r'0b5c9c1ed406b5a99dd0e410b1a0ff5c9470a904';
+    r'140798cdbeaf0926070af8571a79b189513b2969';
 
 abstract class _$RecentRecordNotifier
     extends $AsyncNotifier<List<DrinkRecordWithItem>> {

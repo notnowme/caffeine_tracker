@@ -93,8 +93,8 @@ List<BarChartGroupData> _buildHourlyBarGroups(List<double> data) {
           color: AppColors.primary,
           width: 10, // 촘촘하게
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(3),
-            topRight: Radius.circular(3),
+            topLeft: Radius.circular(1),
+            topRight: Radius.circular(1),
           ),
         ),
       ],

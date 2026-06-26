@@ -9,7 +9,7 @@ class _My extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '개인화',
+          '정보',
           style: AppFonts.small.copyWith(
             color: AppColors.fg04,
             fontWeight: FontWeight.w800,
