@@ -90,12 +90,6 @@ lib/
 flutter pub get
 ```
 
-### 코드 생성 (freezed, riverpod, retrofit 등)
-
-```bash
-dart run build_runner build --delete-conflicting-outputs
-```
-
 ### 환경 변수 (.env)
 
 프로젝트 루트에 `.env` 파일을 생성하고 Supabase 정보를 입력합니다.
