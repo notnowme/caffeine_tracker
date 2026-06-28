@@ -15,8 +15,11 @@ class RecordRepositoryImpl implements RecordRepository {
         ? 'caffeine_items_from_local'
         : 'caffeine_items_from_supabase';
     final result = await db.insert('drink_records', record.toMap());
+    final productId = record.isCustom
+        ? record.localItemId
+        : record.supabaseItemId;
     await db.rawUpdate('UPDATE $table SET hits = hits + 1 WHERE id = ?', [
-      record.id,
+      productId,
     ]);
     return result;
   }
