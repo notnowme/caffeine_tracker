@@ -24,7 +24,10 @@ Stream<double> currentCaffeine(Ref ref) async* {
     smoking: myInfo.smoking,
   );
 
-  await for (final _ in Stream.periodic(const Duration(seconds: 1))) {
+  // 체내 카페인은 반감기 단위로 천천히 감쇠하므로 정수 mg 표시·시간 단위 차트에는
+  // 분 단위 갱신으로 충분하다. 매초 갱신 시 파생 provider(차트·수면시간)가 매초
+  // DB 재조회·재계산되는 cascade를 피하기 위해 60초 주기로 둔다.
+  await for (final _ in Stream.periodic(const Duration(seconds: 60))) {
     yield CaffeineCalculator.getCurrentLevel(
       records: items,
       gender: myInfo.gender,

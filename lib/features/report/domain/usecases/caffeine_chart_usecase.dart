@@ -1,25 +1,15 @@
-import 'package:caffeine_tracker/features/menu/data/repositories/record_repository.dart';
 import 'package:caffeine_tracker/features/report/data/models/report_with_drink_model.dart';
 import 'package:caffeine_tracker/features/report/presentation/providers/report_chart_provider.dart';
 
 class GetCaffeineChartDataByDateUseCase {
-  final RecordRepository repo;
-  GetCaffeineChartDataByDateUseCase(this.repo);
-
-  Future<List<double>> execute(ChartDate date) async {
-    final now = DateTime.now();
-    final from = _getFrom(now, date);
-    final records = await repo.getRecordsByRange(from: from, to: now);
-
+  // 전체 기록을 받아 메모리에서 기간별 버킷으로 집계한다(공유 provider가 1회 조회).
+  // 버킷 매칭이 기간 윈도우를 내포하므로 별도 범위 필터는 불필요하다.
+  List<double> execute(
+    List<DrinkRecordWithItem> records,
+    ChartDate date,
+    DateTime now,
+  ) {
     return _buildSpots(records, date, now);
-  }
-
-  DateTime _getFrom(DateTime now, ChartDate date) {
-    return switch (date) {
-      ChartDate.week => now.subtract(const Duration(days: 7)),
-      ChartDate.month => DateTime(now.year, now.month - 1, now.day),
-      ChartDate.year => DateTime(now.year - 1, now.month, now.day),
-    };
   }
 
   List<double> _buildSpots(

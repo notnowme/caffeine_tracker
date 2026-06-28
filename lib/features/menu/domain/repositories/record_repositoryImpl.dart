@@ -72,16 +72,7 @@ class RecordRepositoryImpl implements RecordRepository {
   @override
   Future<List<DrinkRecordWithItem>> getRecordsWithItem() async {
     final records = await getRecords();
-
-    return await Future.wait(
-      records.map((record) async {
-        final item = await getItemById(
-          isCustom: record.isCustom,
-          id: record.isCustom ? record.localItemId! : record.supabaseItemId!,
-        );
-        return DrinkRecordWithItem(record: record, item: item);
-      }),
-    );
+    return _attachItems(records);
   }
 
   @override
@@ -98,15 +89,62 @@ class RecordRepositoryImpl implements RecordRepository {
       orderBy: 'drink_at ${orderBy.name.toUpperCase()}',
     );
     final records = result.map((map) => DrinkRecordModel.fromMap(map)).toList();
-    return await Future.wait(
-      records.map((record) async {
-        final item = await getItemById(
-          isCustom: record.isCustom,
-          id: record.isCustom ? record.localItemId! : record.supabaseItemId!,
-        );
-        return DrinkRecordWithItem(record: record, item: item);
-      }),
+    return _attachItems(records);
+  }
+
+  // 레코드 목록에 item을 붙인다. 레코드당 1쿼리(N+1) 대신 테이블별 IN 조회로
+  // 일괄 조회한다(레코드 순서 보존, item 미존재 시 null — getItemById와 동일).
+  Future<List<DrinkRecordWithItem>> _attachItems(
+    List<DrinkRecordModel> records,
+  ) async {
+    if (records.isEmpty) return [];
+
+    final localIds = <int>{};
+    final supabaseIds = <int>{};
+    for (final record in records) {
+      if (record.isCustom) {
+        if (record.localItemId != null) localIds.add(record.localItemId!);
+      } else {
+        if (record.supabaseItemId != null) {
+          supabaseIds.add(record.supabaseItemId!);
+        }
+      }
+    }
+
+    final localItems = await _fetchItemsByIds(
+      'caffeine_items_from_local',
+      localIds,
     );
+    final supabaseItems = await _fetchItemsByIds(
+      'caffeine_items_from_supabase',
+      supabaseIds,
+    );
+
+    return records.map((record) {
+      final item = record.isCustom
+          ? localItems[record.localItemId]
+          : supabaseItems[record.supabaseItemId];
+      return DrinkRecordWithItem(record: record, item: item);
+    }).toList();
+  }
+
+  // 단일 테이블에서 id 집합을 한 번의 IN 쿼리로 조회해 id→item 맵으로 반환.
+  Future<Map<int, CaffeineItemModel>> _fetchItemsByIds(
+    String table,
+    Set<int> ids,
+  ) async {
+    if (ids.isEmpty) return {};
+    final db = await _db.database;
+    final placeholders = List.filled(ids.length, '?').join(',');
+    final result = await db.query(
+      table,
+      where: 'id IN ($placeholders)',
+      whereArgs: ids.toList(),
+    );
+    return {
+      for (final map in result)
+        (map['id'] as int): CaffeineItemModel.fromMap(map),
+    };
   }
 
   @override

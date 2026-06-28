@@ -1,6 +1,7 @@
 import 'package:caffeine_tracker/features/info/presentation/providers/info_provider.dart';
 import 'package:caffeine_tracker/features/menu/presentation/providers/record_provider.dart';
 import 'package:caffeine_tracker/features/report/data/models/report_hits_model.dart';
+import 'package:caffeine_tracker/features/report/data/models/report_with_drink_model.dart';
 import 'package:caffeine_tracker/features/report/domain/usecases/caffeine_change_usecase.dart';
 import 'package:caffeine_tracker/features/report/domain/usecases/caffeine_chart_usecase.dart';
 import 'package:caffeine_tracker/features/report/domain/usecases/caffeine_report_desc_usecase.dart';
@@ -29,35 +30,44 @@ class ChartDateNotifier extends _$ChartDateNotifier {
   void change(ChartDate date) => state = date;
 }
 
+// 리포트 화면의 모든 통계가 공유하는 베이스 provider. 전체 기록(item 포함)을
+// 한 번만 조회하고, 각 통계 provider는 이를 watch해 메모리에서 가공한다.
+// (기존: 통계마다 range 조회 5~6회 + 각 N+1 → 이제 1회 조회로 dedup)
+@Riverpod()
+Future<List<DrinkRecordWithItem>> reportRecords(Ref ref) async {
+  final repo = ref.read(recordRepositoryImplProvider);
+  return repo.getRecordsWithItem();
+}
+
 @Riverpod()
 Future<double> reportChangeCaffeinePercent(Ref ref) async {
   final date = ref.watch(chartDateProvider);
-  final repo = ref.read(recordRepositoryImplProvider);
-  return await GetCaffeineChangePercentUseCase(repo).execute(date);
+  final records = await ref.watch(reportRecordsProvider.future);
+  return GetCaffeineChangePercentUseCase().execute(records, date, DateTime.now());
 }
 
 @Riverpod()
 Future<List<double>> reportCaffeineData(Ref ref) async {
   final date = ref.watch(chartDateProvider);
-  final repo = ref.read(recordRepositoryImplProvider);
-  return await GetCaffeineChartDataByDateUseCase(repo).execute(date);
+  final records = await ref.watch(reportRecordsProvider.future);
+  return GetCaffeineChartDataByDateUseCase().execute(records, date, DateTime.now());
 }
 
 @Riverpod()
 Future<List<double>> reportTimePattern(Ref ref) async {
-  final repo = ref.read(recordRepositoryImplProvider);
-  return await GetCaffeineTimePatternUseCase(repo).execute();
+  final records = await ref.watch(reportRecordsProvider.future);
+  return GetCaffeineTimePatternUseCase().execute(records, DateTime.now());
 }
 
 @Riverpod()
 Future<List<DrinkDescModel>> reportCaffeineDesc(Ref ref) async {
-  final repo = ref.read(recordRepositoryImplProvider);
-  return await GetCaffeineAddDescUseCase(repo).execute();
+  final records = await ref.watch(reportRecordsProvider.future);
+  return GetCaffeineAddDescUseCase().execute(records);
 }
 
 @Riverpod()
 Future<Map<String, int>> reportSummary(Ref ref) async {
-  final repo = ref.read(recordRepositoryImplProvider);
+  final records = await ref.watch(reportRecordsProvider.future);
   final my = ref.watch(myInfoProvider).value!;
-  return await GetCaffeineSummaryUseCase(repo).execute(my);
+  return GetCaffeineSummaryUseCase().execute(records, my, DateTime.now());
 }

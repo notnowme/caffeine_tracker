@@ -139,7 +139,7 @@ final class RecordNotifierProvider
   RecordNotifier create() => RecordNotifier();
 }
 
-String _$recordNotifierHash() => r'0f1c57904c84e39f36994b40634ba8c9e3f80253';
+String _$recordNotifierHash() => r'd37ee4f56234e145c325f19fa2d78cde948e91e3';
 
 abstract class _$RecordNotifier extends $AsyncNotifier<List<DrinkRecordModel>> {
   FutureOr<List<DrinkRecordModel>> build();

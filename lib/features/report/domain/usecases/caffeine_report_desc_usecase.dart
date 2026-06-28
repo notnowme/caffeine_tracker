@@ -1,15 +1,12 @@
-import 'package:caffeine_tracker/features/menu/data/repositories/record_repository.dart';
 import 'package:caffeine_tracker/features/report/data/models/report_hits_model.dart';
+import 'package:caffeine_tracker/features/report/data/models/report_with_drink_model.dart';
 
 class GetCaffeineAddDescUseCase {
-  final RecordRepository repo;
-  GetCaffeineAddDescUseCase(this.repo);
-
-  Future<List<DrinkDescModel>> execute() async {
-    final result = await repo.getRecordsWithItem();
+  // 전체 기록(item 포함)을 받아 음료 이름별 횟수를 집계한다.
+  List<DrinkDescModel> execute(List<DrinkRecordWithItem> records) {
     final map = <String, DrinkDescModel>{};
 
-    for (final record in result) {
+    for (final record in records) {
       final name = record.item?.name;
       final category = record.item?.category;
       if (name == null || category == null) continue;

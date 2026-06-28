@@ -61,6 +61,47 @@ abstract class _$ChartDateNotifier extends $Notifier<ChartDate> {
   }
 }
 
+@ProviderFor(reportRecords)
+final reportRecordsProvider = ReportRecordsProvider._();
+
+final class ReportRecordsProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<DrinkRecordWithItem>>,
+          List<DrinkRecordWithItem>,
+          FutureOr<List<DrinkRecordWithItem>>
+        >
+    with
+        $FutureModifier<List<DrinkRecordWithItem>>,
+        $FutureProvider<List<DrinkRecordWithItem>> {
+  ReportRecordsProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'reportRecordsProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$reportRecordsHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<List<DrinkRecordWithItem>> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<List<DrinkRecordWithItem>> create(Ref ref) {
+    return reportRecords(ref);
+  }
+}
+
+String _$reportRecordsHash() => r'80dda421850a0f3c79bdaa0085494a75ee5f36bc';
+
 @ProviderFor(reportChangeCaffeinePercent)
 final reportChangeCaffeinePercentProvider =
     ReportChangeCaffeinePercentProvider._();
@@ -94,7 +135,7 @@ final class ReportChangeCaffeinePercentProvider
 }
 
 String _$reportChangeCaffeinePercentHash() =>
-    r'cf710bccd07df440111912db2fa9fce917da2ed6';
+    r'2f45e4689e406f42c60f0cb1b12e61d0f1c56f89';
 
 @ProviderFor(reportCaffeineData)
 final reportCaffeineDataProvider = ReportCaffeineDataProvider._();
@@ -134,7 +175,7 @@ final class ReportCaffeineDataProvider
 }
 
 String _$reportCaffeineDataHash() =>
-    r'2be70a79fc1c66cad2cf3b0719a8ab6ea8b1c436';
+    r'0e80ab0009b0caf496909671a853836cce5e8a56';
 
 @ProviderFor(reportTimePattern)
 final reportTimePatternProvider = ReportTimePatternProvider._();
@@ -173,7 +214,7 @@ final class ReportTimePatternProvider
   }
 }
 
-String _$reportTimePatternHash() => r'd11d1ccdcd85feaab84da3cb0710e2fbc238c734';
+String _$reportTimePatternHash() => r'39b0f2832b2827777e3b2222efebf2c2d57574be';
 
 @ProviderFor(reportCaffeineDesc)
 final reportCaffeineDescProvider = ReportCaffeineDescProvider._();
@@ -215,7 +256,7 @@ final class ReportCaffeineDescProvider
 }
 
 String _$reportCaffeineDescHash() =>
-    r'310195788568d4bb208ece2b45188e9c55147b57';
+    r'30398364403964158b8bc266e8498e1db381c677';
 
 @ProviderFor(reportSummary)
 final reportSummaryProvider = ReportSummaryProvider._();
@@ -254,4 +295,4 @@ final class ReportSummaryProvider
   }
 }
 
-String _$reportSummaryHash() => r'8ecd2753898d4a96670a9d61fceff121b0961f78';
+String _$reportSummaryHash() => r'd54e93926529d4cd01d1fc9880fcd30719bb43de';

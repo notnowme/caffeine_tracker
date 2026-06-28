@@ -1,20 +1,18 @@
-import 'package:caffeine_tracker/features/menu/data/repositories/record_repository.dart';
+import 'package:caffeine_tracker/features/report/data/models/report_with_drink_model.dart';
 
 class GetCaffeineTimePatternUseCase {
-  final RecordRepository repo;
-  GetCaffeineTimePatternUseCase(this.repo);
-
-  Future<List<double>> execute() async {
-    final now = DateTime.now();
+  // 전체 기록을 받아 최근 1개월 윈도우 내 기록을 시간대별로 집계한다.
+  List<double> execute(List<DrinkRecordWithItem> records, DateTime now) {
     final from = DateTime(now.year, now.month - 1, now.day);
-    final records = await repo.getRecordsByRange(from: from, to: now);
 
     // 0~23시 24개 구간
     final pattern = List.filled(24, 0.0);
 
     for (final record in records) {
-      final hour = record.record.drinkAt.hour;
-      pattern[hour] += record.record.caffeineAmount;
+      final at = record.record.drinkAt;
+      // drink_at BETWEEN from AND now (양끝 포함)
+      if (at.isBefore(from) || at.isAfter(now)) continue;
+      pattern[at.hour] += record.record.caffeineAmount;
     }
 
     return pattern;

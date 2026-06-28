@@ -40,7 +40,7 @@ final class CurrentCaffeineProvider
   }
 }
 
-String _$currentCaffeineHash() => r'b6f21006ae2508e023801cbbf9d61d7f6589c602';
+String _$currentCaffeineHash() => r'dfe009dbf46a55b2cb243d8a66d1adf6647e1b7d';
 
 @ProviderFor(todayDrinks)
 final todayDrinksProvider = TodayDrinksProvider._();
@@ -153,7 +153,7 @@ final class SleepTimeProvider
   }
 }
 
-String _$sleepTimeHash() => r'3bbd24e46ff344485e4210b081ff8683242d6f79';
+String _$sleepTimeHash() => r'46b24e51c592c51792e31b64073bb35e15be2e7a';
 
 @ProviderFor(caffeineChartData)
 final caffeineChartDataProvider = CaffeineChartDataProvider._();
@@ -192,4 +192,4 @@ final class CaffeineChartDataProvider
   }
 }
 
-String _$caffeineChartDataHash() => r'3dc0d094b7d5c30f6631bb902a8cb07a16d0ddec';
+String _$caffeineChartDataHash() => r'6d4c3a4d64aa58e1a17d15b0eb1e4e1fc2f44be0';
