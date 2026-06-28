@@ -45,7 +45,6 @@ class _Data extends ConsumerWidget {
                             ).execute();
                             if (context.mounted) {
                               if (result > 0) {
-                                print('초기화 성공');
                                 context.pop();
                                 await secure.deleteAll();
                                 ref.invalidate(myInfoProvider);
@@ -53,9 +52,7 @@ class _Data extends ConsumerWidget {
                                   context.goNamed(SplashScreen.routeName);
                                 }
                               }
-                            } else {
-                              print('초기화 실패');
-                            }
+                            } else {}
                           },
                         ),
                       );

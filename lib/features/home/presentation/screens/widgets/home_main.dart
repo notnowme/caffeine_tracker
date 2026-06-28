@@ -195,7 +195,7 @@ class _MainCaffeineGraphNow extends ConsumerWidget {
                     extraLinesOnTop: false,
                     horizontalLines: [
                       HorizontalLine(
-                        y: 400.toDouble(),
+                        y: targetAmount.toDouble(),
                         dashArray: [
                           // 점선 길이,
                           2,
@@ -298,7 +298,7 @@ class _MainCaffeineSleepTime extends ConsumerWidget {
                   ),
                 ),
                 TextSpan(
-                  text: DateFormat('HH:MM').format(sleepTime),
+                  text: DateFormat('HH:mm').format(sleepTime),
                   style: AppFonts.small.copyWith(
                     color: AppColors.fg,
                     fontWeight: FontWeight.w800,

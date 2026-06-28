@@ -107,12 +107,9 @@ class _AddBottomSheet extends ConsumerWidget {
                                     .delete(product.id!);
                                 if (context.mounted) {
                                   if (result > 0) {
-                                    print('삭제 성공!');
                                     context.pop();
                                     context.pop();
-                                  } else {
-                                    print('실패');
-                                  }
+                                  } else {}
                                 }
                               },
                             ),

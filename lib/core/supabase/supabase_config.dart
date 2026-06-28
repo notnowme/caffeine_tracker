@@ -15,7 +15,6 @@ Future<void> initSupabase() async {
   try {
     await Supabase.initialize(url: _supabaseUrl!, anonKey: _supabaseAnonKey!);
   } catch (e) {
-    print(e);
     throw ErrorModel(
       title: 'supabase error',
       message: '데이터를 읽어오지 못했습니다.',

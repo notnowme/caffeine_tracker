@@ -122,7 +122,6 @@ class CaffeineItemRepositoryImpl implements CaffeineItemRepository {
       );
       return result;
     } catch (e) {
-      print(e);
       return 0;
     }
   }
@@ -145,7 +144,6 @@ class CaffeineItemRepositoryImpl implements CaffeineItemRepository {
       ]);
       return 1;
     } catch (e) {
-      print(e);
       return 0;
     }
   }

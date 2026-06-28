@@ -88,7 +88,6 @@ class _Results extends ConsumerWidget {
           );
         },
         error: (e, stack) {
-          print(e);
           return Container();
         },
         loading: () {

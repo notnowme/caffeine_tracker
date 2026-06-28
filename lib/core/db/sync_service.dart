@@ -30,7 +30,6 @@ class SyncService {
         whereArgs: [1],
       );
     } catch (e) {
-      print(e);
       rethrow;
     }
   }

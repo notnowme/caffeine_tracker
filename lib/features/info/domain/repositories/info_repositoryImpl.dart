@@ -23,10 +23,8 @@ class InfoRepositoryimpl implements InfoRepository {
     try {
       final db = await _db.database;
       final result = await db.query('info');
-      print(result);
       return InfoModel.fromMap(result.first);
     } catch (e) {
-      print(e);
       return InfoModel.empty();
     }
   }

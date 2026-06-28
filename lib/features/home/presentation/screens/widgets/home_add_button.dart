@@ -7,9 +7,7 @@ class _AddButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BounceButton(
       buttonColor: Colors.transparent,
-      action: () {
-        print('hi');
-      },
+      action: () {},
       child: DottedBorder(
         options: RoundedRectDottedBorderOptions(
           padding: EdgeInsets.zero,

@@ -12,11 +12,9 @@ class _Submit extends ConsumerWidget {
     return BounceButton(
       action: () async {
         if (isShort) {
-          debugPrint('짧은 이름');
           return;
         }
         if (isWrong) {
-          debugPrint('몸무게 이상');
           return;
         }
         if (!isEdit) {
@@ -24,18 +22,14 @@ class _Submit extends ConsumerWidget {
           if (context.mounted) {
             if (result > 0) {
               context.goNamed(HomeScreen.routeName);
-            } else {
-              print('failed');
-            }
+            } else {}
           }
         } else {
           final result = await ref.read(infoProvider.notifier).update();
           if (context.mounted) {
             if (result > 0) {
               context.pop();
-            } else {
-              print('failed');
-            }
+            } else {}
           }
         }
       },

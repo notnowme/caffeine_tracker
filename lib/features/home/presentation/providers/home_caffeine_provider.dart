@@ -16,7 +16,7 @@ Stream<double> currentCaffeine(Ref ref) async* {
   final records = await ref
       .watch(recordRepositoryImplProvider)
       .getRecordsByRange(from: from, to: now);
-  final myInfo = ref.watch(myInfoProvider).value!;
+  final myInfo = ref.watch(myInfoProvider).requireValue;
   final items = records.map((e) => e.record).toList();
   yield CaffeineCalculator.getCurrentLevel(
     records: items,
@@ -52,7 +52,7 @@ Future<int> todayTotalCaffeineAmount(Ref ref) async {
 Future<DateTime?> sleepTime(Ref ref) async {
   ref.watch(currentCaffeineProvider);
   final todayRecords = ref.watch(todayDrinksProvider).value ?? [];
-  final myInfo = ref.watch(myInfoProvider).value!;
+  final myInfo = ref.watch(myInfoProvider).requireValue;
   return CaffeineCalculator.getSleepTime(
     records: todayRecords.map((e) => e.record).toList(),
     gender: myInfo.gender,
@@ -62,7 +62,7 @@ Future<DateTime?> sleepTime(Ref ref) async {
 
 @Riverpod()
 Future<List<FlSpot>> caffeineChartData(Ref ref) async {
-  final myInfo = ref.watch(myInfoProvider).value!;
+  final myInfo = ref.watch(myInfoProvider).requireValue;
   ref.watch(currentCaffeineProvider);
 
   final repo = ref.read(recordRepositoryImplProvider);

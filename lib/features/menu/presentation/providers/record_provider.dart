@@ -45,6 +45,8 @@ class RecordNotifier extends _$RecordNotifier {
     final repo = ref.read(recordRepositoryImplProvider);
     ref.invalidate(todayDrinksProvider);
     ref.invalidate(currentCaffeineProvider);
+    ref.invalidate(todayTotalCaffeineAmountProvider);
+    ref.invalidate(recentRecordProvider);
     return await AddDrinkCaffeineUseCase(repo).execute(product);
   }
 
