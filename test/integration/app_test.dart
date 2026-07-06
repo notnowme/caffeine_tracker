@@ -1,5 +1,5 @@
 import 'package:caffeine_tracker/core/db/local_database.dart';
-import 'package:caffeine_tracker/core/db/repositories/local_db_repositoryImpl.dart';
+import 'package:caffeine_tracker/core/db/repositories/local_db_repository_impl.dart';
 import 'package:caffeine_tracker/features/home/presentation/providers/home_caffeine_provider.dart';
 import 'package:caffeine_tracker/features/menu/data/models/caffeine_model.dart';
 import 'package:caffeine_tracker/features/menu/presentation/providers/caffeine_item_provider.dart';

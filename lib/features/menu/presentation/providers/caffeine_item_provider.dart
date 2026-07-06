@@ -1,5 +1,5 @@
 import 'package:caffeine_tracker/core/db/local_database.dart';
-import 'package:caffeine_tracker/core/db/repositories/local_db_repositoryImpl.dart';
+import 'package:caffeine_tracker/core/db/repositories/local_db_repository_impl.dart';
 import 'package:caffeine_tracker/features/menu/data/models/caffeine_model.dart';
 import 'package:caffeine_tracker/features/menu/presentation/providers/search_text_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

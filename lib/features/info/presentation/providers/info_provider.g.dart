@@ -15,11 +15,11 @@ final infoRepositoryProvider = InfoRepositoryProvider._();
 final class InfoRepositoryProvider
     extends
         $FunctionalProvider<
-          InfoRepositoryimpl,
-          InfoRepositoryimpl,
-          InfoRepositoryimpl
+          InfoRepositoryImpl,
+          InfoRepositoryImpl,
+          InfoRepositoryImpl
         >
-    with $Provider<InfoRepositoryimpl> {
+    with $Provider<InfoRepositoryImpl> {
   InfoRepositoryProvider._()
     : super(
         from: null,
@@ -36,25 +36,25 @@ final class InfoRepositoryProvider
 
   @$internal
   @override
-  $ProviderElement<InfoRepositoryimpl> $createElement(
+  $ProviderElement<InfoRepositoryImpl> $createElement(
     $ProviderPointer pointer,
   ) => $ProviderElement(pointer);
 
   @override
-  InfoRepositoryimpl create(Ref ref) {
+  InfoRepositoryImpl create(Ref ref) {
     return infoRepository(ref);
   }
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(InfoRepositoryimpl value) {
+  Override overrideWithValue(InfoRepositoryImpl value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<InfoRepositoryimpl>(value),
+      providerOverride: $SyncValueProvider<InfoRepositoryImpl>(value),
     );
   }
 }
 
-String _$infoRepositoryHash() => r'a3e8d217e63683b8ce6b345366cda3a27554aaae';
+String _$infoRepositoryHash() => r'4f3d6511ad8b6c68f08501aeae2095a183f10edb';
 
 @ProviderFor(MyInfoNotifier)
 final myInfoProvider = MyInfoNotifierProvider._();
@@ -80,7 +80,7 @@ final class MyInfoNotifierProvider
   MyInfoNotifier create() => MyInfoNotifier();
 }
 
-String _$myInfoNotifierHash() => r'7c728501c2a1d87bfcf82bb82fe7ca2627e56291';
+String _$myInfoNotifierHash() => r'270b8284b0ac6e2757ef0ac39c11fbce58a5f6b2';
 
 abstract class _$MyInfoNotifier extends $AsyncNotifier<InfoModel> {
   FutureOr<InfoModel> build();

@@ -1,14 +1,14 @@
 import 'package:caffeine_tracker/core/db/local_database.dart';
 import 'package:caffeine_tracker/core/db/secure_storage.dart';
 import 'package:caffeine_tracker/features/info/data/models/info_model.dart';
-import 'package:caffeine_tracker/features/info/domain/repositories/info_repositoryImpl.dart';
+import 'package:caffeine_tracker/features/info/data/repositories/info_repository_impl.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'info_provider.g.dart';
 
 @Riverpod()
-InfoRepositoryimpl infoRepository(Ref ref) {
-  return InfoRepositoryimpl(LocalDataBase());
+InfoRepositoryImpl infoRepository(Ref ref) {
+  return InfoRepositoryImpl(LocalDataBase());
 }
 
 // 정보는 거의 변하지 않으므로 페이지가 사라져도 유지시키기
@@ -20,7 +20,7 @@ class MyInfoNotifier extends _$MyInfoNotifier {
   }
 
   Future<InfoModel> getMyInfo() async {
-    final repo = InfoRepositoryimpl(LocalDataBase());
+    final repo = InfoRepositoryImpl(LocalDataBase());
     return await repo.getMyInfo();
   }
 

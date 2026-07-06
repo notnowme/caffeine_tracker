@@ -86,7 +86,7 @@ class _DrinkList extends ConsumerWidget {
                   isLast: data.length == 1 ? true : data.length == index + 1,
                   menu: recordWithItem.item!.name,
                   time: DateFormat(
-                    'HH:MM',
+                    'HH:mm',
                   ).format(recordWithItem.record.drinkAt),
                   category: recordWithItem.item!.category,
                   amount: recordWithItem.record.caffeineAmount,

@@ -9,7 +9,7 @@ import 'package:caffeine_tracker/core/db/repositories/local_db_repository.dart'
     as _i7;
 import 'package:caffeine_tracker/features/menu/data/models/caffeine_model.dart'
     as _i6;
-import 'package:caffeine_tracker/features/menu/data/repositories/record_repository.dart'
+import 'package:caffeine_tracker/features/menu/domain/repositories/record_repository.dart'
     as _i2;
 import 'package:caffeine_tracker/features/report/data/models/report_model.dart'
     as _i4;

@@ -1,7 +1,7 @@
 import 'package:caffeine_tracker/core/db/local_database.dart';
 import 'package:caffeine_tracker/features/home/presentation/providers/home_caffeine_provider.dart';
 import 'package:caffeine_tracker/features/menu/data/models/caffeine_model.dart';
-import 'package:caffeine_tracker/features/menu/domain/repositories/record_repositoryImpl.dart';
+import 'package:caffeine_tracker/features/menu/data/repositories/record_repository_impl.dart';
 import 'package:caffeine_tracker/features/menu/domain/usecases/caffeine_record.dart';
 import 'package:caffeine_tracker/features/menu/presentation/providers/caffeine_item_provider.dart';
 import 'package:caffeine_tracker/features/report/data/models/report_model.dart';

@@ -1,6 +1,6 @@
 import 'package:caffeine_tracker/features/home/domain/usecases/home_chart_data.dart';
 import 'package:caffeine_tracker/features/info/data/models/info_model.dart';
-import 'package:caffeine_tracker/features/menu/data/repositories/record_repository.dart';
+import 'package:caffeine_tracker/features/menu/domain/repositories/record_repository.dart';
 import 'package:caffeine_tracker/features/report/data/models/report_model.dart';
 import 'package:caffeine_tracker/features/report/data/models/report_with_drink_model.dart';
 import 'package:flutter_test/flutter_test.dart';

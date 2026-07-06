@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:caffeine_tracker/features/info/data/models/info_model.dart';
-import 'package:caffeine_tracker/features/menu/data/repositories/record_repository.dart';
+import 'package:caffeine_tracker/features/menu/domain/repositories/record_repository.dart';
 import 'package:caffeine_tracker/shared/utils/caffeine_calculator.dart';
 import 'package:fl_chart/fl_chart.dart';
 

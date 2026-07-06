@@ -1,11 +1,11 @@
 import 'package:caffeine_tracker/core/db/local_database.dart';
 import 'package:caffeine_tracker/features/info/data/models/info_model.dart';
-import 'package:caffeine_tracker/features/info/data/repositories/info_repository.dart';
+import 'package:caffeine_tracker/features/info/domain/repositories/info_repository.dart';
 import 'package:sqflite/sqflite.dart';
 
-class InfoRepositoryimpl implements InfoRepository {
+class InfoRepositoryImpl implements InfoRepository {
   final LocalDataBase _db;
-  InfoRepositoryimpl(this._db);
+  InfoRepositoryImpl(this._db);
 
   @override
   Future<int> add(InfoModel my) async {
