@@ -1,7 +1,7 @@
 import 'package:caffeine_tracker/core/db/secure_storage.dart';
 import 'package:caffeine_tracker/features/home/presentation/screens/home_screen.dart';
-import 'package:caffeine_tracker/features/onboard/screens/onboard_screen.dart';
-import 'package:caffeine_tracker/features/splash/screens/providers/progress_provider.dart';
+import 'package:caffeine_tracker/features/onboard/presentation/screens/onboard_screen.dart';
+import 'package:caffeine_tracker/features/splash/presentation/screens/providers/progress_provider.dart';
 import 'package:caffeine_tracker/shared/data/models/error_model.dart';
 import 'package:caffeine_tracker/shared/presentation/providers/error_provider.dart';
 import 'package:caffeine_tracker/shared/presentation/widgets/app_icon.dart';

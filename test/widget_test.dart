@@ -1,7 +1,7 @@
 // 앱 진입점 스모크 테스트.
 // 온보딩 화면이 예외 없이 렌더링되는지 검증한다.
 
-import 'package:caffeine_tracker/features/onboard/screens/onboard_screen.dart';
+import 'package:caffeine_tracker/features/onboard/presentation/screens/onboard_screen.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'helpers/test_app.dart';

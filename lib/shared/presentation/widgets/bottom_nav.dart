@@ -1,9 +1,9 @@
 import 'package:caffeine_tracker/common/const/colors.dart';
 import 'package:caffeine_tracker/common/const/fonts.dart';
 import 'package:caffeine_tracker/features/home/presentation/screens/home_screen.dart';
-import 'package:caffeine_tracker/features/menu/presentation/screen/menu_screen.dart';
+import 'package:caffeine_tracker/features/menu/presentation/screens/menu_screen.dart';
 import 'package:caffeine_tracker/features/report/presentation/screens/report_screen.dart';
-import 'package:caffeine_tracker/features/settings/presentation/screen/settings_screen.dart';
+import 'package:caffeine_tracker/features/settings/presentation/screens/settings_screen.dart';
 import 'package:caffeine_tracker/shared/presentation/providers/bottom_nav_provider.dart';
 import 'package:caffeine_tracker/shared/presentation/widgets/alert_dialog.dart';
 import 'package:flutter/cupertino.dart';

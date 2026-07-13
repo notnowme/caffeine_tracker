@@ -1,5 +1,5 @@
 import 'package:caffeine_tracker/core/db/repositories/local_db_repository.dart';
-import 'package:caffeine_tracker/features/settings/domain/usecase/delete_data_usecase.dart';
+import 'package:caffeine_tracker/features/settings/domain/usecases/delete_data_usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

@@ -5,7 +5,7 @@ import 'package:caffeine_tracker/features/menu/data/models/caffeine_model.dart';
 import 'package:caffeine_tracker/features/menu/presentation/providers/caffeine_item_provider.dart';
 import 'package:caffeine_tracker/features/menu/presentation/providers/record_provider.dart';
 import 'package:caffeine_tracker/features/menu/presentation/providers/search_text_provider.dart';
-import 'package:caffeine_tracker/features/menu/presentation/screen/widgets/menu_custom/menu_custom_screen.dart';
+import 'package:caffeine_tracker/features/menu/presentation/screens/widgets/menu_custom/menu_custom_screen.dart';
 import 'package:caffeine_tracker/shared/presentation/ui/container_deco.dart';
 import 'package:caffeine_tracker/shared/presentation/widgets/alert_dialog.dart';
 import 'package:caffeine_tracker/shared/presentation/widgets/bounce_button.dart';

@@ -1,11 +1,11 @@
 import 'package:caffeine_tracker/features/home/presentation/screens/home_screen.dart';
 import 'package:caffeine_tracker/features/info/presentation/screens/info_screen.dart';
-import 'package:caffeine_tracker/features/menu/presentation/screen/menu_screen.dart';
-import 'package:caffeine_tracker/features/menu/presentation/screen/widgets/menu_custom/menu_custom_screen.dart';
-import 'package:caffeine_tracker/features/onboard/screens/onboard_screen.dart';
+import 'package:caffeine_tracker/features/menu/presentation/screens/menu_screen.dart';
+import 'package:caffeine_tracker/features/menu/presentation/screens/widgets/menu_custom/menu_custom_screen.dart';
+import 'package:caffeine_tracker/features/onboard/presentation/screens/onboard_screen.dart';
 import 'package:caffeine_tracker/features/report/presentation/screens/report_screen.dart';
-import 'package:caffeine_tracker/features/settings/presentation/screen/settings_screen.dart';
-import 'package:caffeine_tracker/features/splash/screens/splash_screen.dart';
+import 'package:caffeine_tracker/features/settings/presentation/screens/settings_screen.dart';
+import 'package:caffeine_tracker/features/splash/presentation/screens/splash_screen.dart';
 import 'package:caffeine_tracker/shared/presentation/widgets/bottom_nav.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

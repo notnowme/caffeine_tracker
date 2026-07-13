@@ -25,7 +25,7 @@
 | home UseCase | `test/features/home/domain/usecases/home_chart_data_test.dart` | 6 |
 | menu UseCase | `test/features/menu/domain/usecases/caffeine_record_test.dart` | 8 |
 | report UseCase (5개) | `test/features/report/domain/usecases/*_test.dart` | 16 |
-| settings UseCase | `test/features/settings/domain/usecase/delete_data_usecase_test.dart` | 1 |
+| settings UseCase | `test/features/settings/domain/usecases/delete_data_usecase_test.dart` | 1 |
 
 - 시간 의존 로직(`getCurrentLevel`, `getSleepTime`)은 현재 시각 기준 상대값 + `closeTo`로 검증
 - Repository 의존 UseCase는 Mock으로 분기/경계/빈 입력 검증
