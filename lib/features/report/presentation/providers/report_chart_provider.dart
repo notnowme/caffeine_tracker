@@ -2,6 +2,7 @@ import 'package:caffeine_tracker/features/info/presentation/providers/info_provi
 import 'package:caffeine_tracker/features/menu/presentation/providers/record_provider.dart';
 import 'package:caffeine_tracker/features/report/data/models/report_hits_model.dart';
 import 'package:caffeine_tracker/features/report/data/models/report_with_drink_model.dart';
+import 'package:caffeine_tracker/features/report/domain/entities/chart_date.dart';
 import 'package:caffeine_tracker/features/report/domain/usecases/caffeine_change_usecase.dart';
 import 'package:caffeine_tracker/features/report/domain/usecases/caffeine_chart_usecase.dart';
 import 'package:caffeine_tracker/features/report/domain/usecases/caffeine_report_desc_usecase.dart';
@@ -10,15 +11,6 @@ import 'package:caffeine_tracker/features/report/domain/usecases/caffeine_time_p
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'report_chart_provider.g.dart';
-
-enum ChartDate {
-  week('이번 주'),
-  month('이번 달'),
-  year('연간');
-
-  final String label;
-  const ChartDate(this.label);
-}
 
 @Riverpod()
 class ChartDateNotifier extends _$ChartDateNotifier {

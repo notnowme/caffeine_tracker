@@ -3,6 +3,7 @@ import 'package:caffeine_tracker/common/const/fonts.dart';
 import 'package:caffeine_tracker/features/info/presentation/providers/info_provider.dart';
 import 'package:caffeine_tracker/features/menu/data/models/caffeine_model.dart';
 import 'package:caffeine_tracker/features/report/data/models/report_hits_model.dart';
+import 'package:caffeine_tracker/features/report/domain/entities/chart_date.dart';
 import 'package:caffeine_tracker/features/report/presentation/providers/report_chart_provider.dart';
 import 'package:caffeine_tracker/features/report/presentation/providers/report_tab_provider.dart';
 import 'package:caffeine_tracker/shared/presentation/ui/container_deco.dart';

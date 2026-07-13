@@ -1,7 +1,7 @@
 import 'package:caffeine_tracker/features/report/data/models/report_model.dart';
 import 'package:caffeine_tracker/features/report/data/models/report_with_drink_model.dart';
 import 'package:caffeine_tracker/features/report/domain/usecases/caffeine_change_usecase.dart';
-import 'package:caffeine_tracker/features/report/presentation/providers/report_chart_provider.dart';
+import 'package:caffeine_tracker/features/report/domain/entities/chart_date.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

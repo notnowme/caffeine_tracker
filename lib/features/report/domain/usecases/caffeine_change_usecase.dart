@@ -1,5 +1,5 @@
 import 'package:caffeine_tracker/features/report/data/models/report_with_drink_model.dart';
-import 'package:caffeine_tracker/features/report/presentation/providers/report_chart_provider.dart';
+import 'package:caffeine_tracker/features/report/domain/entities/chart_date.dart';
 
 class GetCaffeineChangePercentUseCase {
   // 전체 기록을 받아 메모리에서 이번/지난 기간을 윈도우링한다(공유 provider가 1회 조회).

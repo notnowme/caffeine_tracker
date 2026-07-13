@@ -1,5 +1,5 @@
 import 'package:caffeine_tracker/features/report/data/models/report_with_drink_model.dart';
-import 'package:caffeine_tracker/features/report/presentation/providers/report_chart_provider.dart';
+import 'package:caffeine_tracker/features/report/domain/entities/chart_date.dart';
 
 class GetCaffeineChartDataByDateUseCase {
   // 전체 기록을 받아 메모리에서 기간별 버킷으로 집계한다(공유 provider가 1회 조회).
