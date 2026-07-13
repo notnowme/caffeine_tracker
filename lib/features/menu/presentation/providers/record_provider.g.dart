@@ -15,11 +15,11 @@ final recordRepositoryImplProvider = RecordRepositoryImplProvider._();
 final class RecordRepositoryImplProvider
     extends
         $FunctionalProvider<
-          RecordRepositoryImpl,
-          RecordRepositoryImpl,
-          RecordRepositoryImpl
+          RecordRepository,
+          RecordRepository,
+          RecordRepository
         >
-    with $Provider<RecordRepositoryImpl> {
+    with $Provider<RecordRepository> {
   RecordRepositoryImplProvider._()
     : super(
         from: null,
@@ -36,26 +36,25 @@ final class RecordRepositoryImplProvider
 
   @$internal
   @override
-  $ProviderElement<RecordRepositoryImpl> $createElement(
-    $ProviderPointer pointer,
-  ) => $ProviderElement(pointer);
+  $ProviderElement<RecordRepository> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
 
   @override
-  RecordRepositoryImpl create(Ref ref) {
+  RecordRepository create(Ref ref) {
     return recordRepositoryImpl(ref);
   }
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(RecordRepositoryImpl value) {
+  Override overrideWithValue(RecordRepository value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<RecordRepositoryImpl>(value),
+      providerOverride: $SyncValueProvider<RecordRepository>(value),
     );
   }
 }
 
 String _$recordRepositoryImplHash() =>
-    r'9476f0eba9f3787075dba4de720f89712b88bf48';
+    r'80df446fa7d54c046f7db39c1412ea49944ab8c8';
 
 @ProviderFor(RecentRecordNotifier)
 final recentRecordProvider = RecentRecordNotifierProvider._();

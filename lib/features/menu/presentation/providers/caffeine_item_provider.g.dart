@@ -15,11 +15,11 @@ final caffeineItemRepositoryProvider = CaffeineItemRepositoryProvider._();
 final class CaffeineItemRepositoryProvider
     extends
         $FunctionalProvider<
-          CaffeineItemRepositoryImpl,
-          CaffeineItemRepositoryImpl,
-          CaffeineItemRepositoryImpl
+          CaffeineItemRepository,
+          CaffeineItemRepository,
+          CaffeineItemRepository
         >
-    with $Provider<CaffeineItemRepositoryImpl> {
+    with $Provider<CaffeineItemRepository> {
   CaffeineItemRepositoryProvider._()
     : super(
         from: null,
@@ -36,26 +36,26 @@ final class CaffeineItemRepositoryProvider
 
   @$internal
   @override
-  $ProviderElement<CaffeineItemRepositoryImpl> $createElement(
+  $ProviderElement<CaffeineItemRepository> $createElement(
     $ProviderPointer pointer,
   ) => $ProviderElement(pointer);
 
   @override
-  CaffeineItemRepositoryImpl create(Ref ref) {
+  CaffeineItemRepository create(Ref ref) {
     return caffeineItemRepository(ref);
   }
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(CaffeineItemRepositoryImpl value) {
+  Override overrideWithValue(CaffeineItemRepository value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<CaffeineItemRepositoryImpl>(value),
+      providerOverride: $SyncValueProvider<CaffeineItemRepository>(value),
     );
   }
 }
 
 String _$caffeineItemRepositoryHash() =>
-    r'a62fcc46fe7153cb4b5ff30f273e6248e675dd03';
+    r'd7efbad991b800b570186963481d8429a791e8ce';
 
 @ProviderFor(allCaffeineItems)
 final allCaffeineItemsProvider = AllCaffeineItemsProvider._();
