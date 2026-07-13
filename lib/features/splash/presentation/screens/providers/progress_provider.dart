@@ -1,4 +1,5 @@
 import 'package:caffeine_tracker/core/db/sync_service.dart';
+import 'package:caffeine_tracker/shared/presentation/providers/offline_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'progress_provider.g.dart';
@@ -16,8 +17,10 @@ enum Progress {
 Stream<Progress> progress(Ref ref) async* {
   yield Progress.dataCheck;
 
-  // DB 갱신
-  await SyncService().versionCheck();
+  // DB 갱신 (오프라인이면 네트워크 동기화를 건너뛰고 로컬 데이터로 진행)
+  if (!ref.read(offlineModeProvider)) {
+    await SyncService().versionCheck();
+  }
   await Future.delayed(const Duration(milliseconds: 400));
   yield Progress.dataDone;
   await Future.delayed(const Duration(milliseconds: 400));

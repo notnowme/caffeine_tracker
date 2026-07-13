@@ -1,10 +1,20 @@
 import 'package:caffeine_tracker/shared/data/models/error_model.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 final _supabaseUrl = dotenv.env['SUPABASE_URL'];
 final _supabaseAnonKey = dotenv.env['SUPABASE_ANON_KEY'];
 Future<void> initSupabase() async {
+  final List<ConnectivityResult> connectivityResult = await (Connectivity())
+      .checkConnectivity();
+  if (connectivityResult.contains(ConnectivityResult.none)) {
+    throw ErrorModel(
+      title: 'No Network',
+      message: '네트워크에 연결되지 않았습니다.',
+      path: '',
+    );
+  }
   if (_supabaseUrl == null || _supabaseAnonKey == null) {
     throw ErrorModel(
       title: 'supabase error',

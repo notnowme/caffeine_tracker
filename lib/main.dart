@@ -2,6 +2,7 @@ import 'package:caffeine_tracker/core/db/local_database.dart';
 import 'package:caffeine_tracker/core/routes/routers.dart';
 import 'package:caffeine_tracker/core/supabase/supabase_config.dart';
 import 'package:caffeine_tracker/shared/data/models/error_model.dart';
+import 'package:caffeine_tracker/shared/presentation/providers/offline_provider.dart';
 import 'package:caffeine_tracker/shared/presentation/widgets/error_app.dart';
 import 'package:caffeine_tracker/shared/presentation/widgets/error_boundery.dart';
 import 'package:flutter/material.dart';
@@ -19,27 +20,39 @@ void main() async {
   try {
     await Future.wait([initSupabase(), LocalDataBase().database]);
   } catch (e) {
-    if (e is ErrorModel) {
-      runApp(ErrorApp(error: e));
-    } else {
-      final ErrorModel error = ErrorModel(
-        title: '알 수 없는 에러',
-        message: '예상치 못한 에러가 발생했습니다.',
-        path: '',
-      );
-      runApp(ErrorApp(error: error));
-    }
+    final ErrorModel error = e is ErrorModel
+        ? e
+        : ErrorModel(
+            title: '알 수 없는 에러',
+            message: '예상치 못한 에러가 발생했습니다.',
+            path: '',
+          );
+    runApp(ErrorApp(error: error));
     return;
   }
 
+  await _startApp();
+}
+
+// 공통 초기화 후 앱 실행. offline=true면 네트워크 없이(로컬 데이터로) 진입한다.
+Future<void> _startApp({bool offline = false}) async {
+  // 로컬 DB는 네트워크와 무관하게 사용 가능. 오프라인 진입 시 아직 준비 안 됐을 수 있어 보장한다.
+  await LocalDataBase().database;
+
   tz.initializeTimeZones();
-
   tz.setLocalLocation(tz.getLocation(tz.local.name));
+  await initializeDateFormatting();
 
-  initializeDateFormatting().then(
-    (_) => runApp(const ProviderScope(child: MyApp())),
+  runApp(
+    ProviderScope(
+      overrides: [if (offline) offlineModeProvider.overrideWithValue(true)],
+      child: const MyApp(),
+    ),
   );
 }
+
+// ErrorApp의 "네트워크 없이 실행"에서 호출: 네트워크 없이 메인 앱으로 진입한다.
+Future<void> runMainAppOffline() => _startApp(offline: true);
 
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});

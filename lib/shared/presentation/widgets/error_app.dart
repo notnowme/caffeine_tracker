@@ -28,7 +28,7 @@ class ErrorApp extends StatelessWidget {
               ),
               context.verticalSpace(16),
               Text(
-                '초기화 하는데 실패했습니다.',
+                '초기화하는 데 실패했습니다.',
                 style: AppFonts.h3.copyWith(color: AppColors.primary),
               ),
               context.verticalSpace(8),
@@ -37,6 +37,22 @@ class ErrorApp extends StatelessWidget {
                 style: AppFonts.tiny.copyWith(color: AppColors.fg04),
               ),
               context.verticalSpace(24),
+              if (error.title == 'No Network')
+                Container(
+                  margin: context.edgeInsets(vertical: 10, bottom: 20),
+                  child: Padding(
+                    padding: context.edgeInsets(horizontal: 20),
+                    child: GestureDetector(
+                      onTap: () {
+                        runMainAppOffline();
+                      },
+                      child: Text(
+                        '네트워크 없이 실행',
+                        style: AppFonts.h3.copyWith(color: AppColors.error),
+                      ),
+                    ),
+                  ),
+                ),
               Padding(
                 padding: context.edgeInsets(horizontal: 20),
                 child: BounceButton(
