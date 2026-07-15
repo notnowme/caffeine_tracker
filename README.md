@@ -120,4 +120,4 @@ flutter test
 - 위젯 테스트: 공통 위젯 및 화면 단위 렌더링/상호작용
 - 통합 테스트: `test/integration/app_test.dart` (인메모리 SQLite + 실제 Riverpod Provider)
 
-자세한 내용은 [`.claude/test_summary.md`](.cluade/test_summary.md) 참고.
+자세한 내용은 [`.claude/test_summary.md`](.claude/test_summary.md) 참고.
