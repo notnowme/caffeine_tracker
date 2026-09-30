@@ -1,0 +1,43 @@
+name: CI
+
+# main에 push 혹은 main으로 PR시
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 코드 가져오기
+      - uses: actions/checkout@v4
+
+      # flutter 설치
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      
+      # .env는 저장소어 없음 -> 빈 파일 만들어두기
+      - name: Create empty .env
+        run: touch .env
+      
+      # sqflite_common_ffi 테스트용
+      - name: Install SQLite
+        run: sudo apt-get update && sudo apt-get install -y libsqlite3-dev
+      
+      # 패키지 설치
+      - name: Install dependencies
+        run: flutter pub get
+      
+      # 분석
+      - name: Analyze
+        run: flutter analyze --no-fatal-infos --no-fatal-warnings
+
+      # 테스트
+      - name: Test
+        run: flutter test
+        
