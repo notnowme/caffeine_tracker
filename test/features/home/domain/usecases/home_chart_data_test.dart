@@ -36,24 +36,18 @@ void main() {
 
   group('GetCaffeineChartDataUseCase', () {
     test('기록이 없으면 13개 포인트를 반환하고 모든 농도가 0이다', () async {
-      final now = DateTime(2026, 6, 28, 12);
-      final record = withItem(caffeineAmount: 100, minutesAgo: 45, now: now);
       // given
       when(
         repo.getRecordsByRange(from: anyNamed('from'), to: anyNamed('to')),
-      ).thenAnswer((_) async => [record]);
+      ).thenAnswer((_) async => []);
       final useCase = GetCaffeineChartDataUseCase(repo);
 
       // when
-      final result = await useCase.execute(
-        gender: Gender.male,
-        smoking: false,
-        now: now,
-      );
+      final result = await useCase.execute(gender: Gender.male, smoking: false);
 
       // then
-      expect(result.first.y, 0);
-      expect(result.last.y, closeTo(100, 1));
+      expect(result.length, 13);
+      expect(result.every((spot) => spot.y == 0), isTrue);
     });
 
     test('포인트의 x값이 0부터 12까지 순서대로 생성된다', () async {
@@ -76,16 +70,21 @@ void main() {
     });
 
     test('45분 전 100mg 기록이 있으면 첫 포인트는 0, 마지막 포인트는 약 100이다', () async {
+      final now = DateTime(2026, 6, 28, 12);
+      final record = withItem(caffeineAmount: 100, minutesAgo: 45, now: now);
+
       // given (비흡연 남성, 흡수 완료 시점)
       when(
         repo.getRecordsByRange(from: anyNamed('from'), to: anyNamed('to')),
-      ).thenAnswer(
-        (_) async => [withItem(caffeineAmount: 100, minutesAgo: 45)],
-      );
+      ).thenAnswer((_) async => [record]);
       final useCase = GetCaffeineChartDataUseCase(repo);
 
       // when
-      final result = await useCase.execute(gender: Gender.male, smoking: false);
+      final result = await useCase.execute(
+        gender: Gender.male,
+        smoking: false,
+        now: now,
+      );
 
       // then (12시간 전 시점에는 아직 안 마셨으므로 0)
       expect(result.first.y, 0);
