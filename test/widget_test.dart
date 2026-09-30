@@ -15,6 +15,7 @@ void main() {
     // then (소개 칩의 텍스트가 표시된다)
     expect(find.text('음료 라이브러리'), findsOneWidget);
     expect(find.text('잔존량 계산'), findsOneWidget);
+    expect(find.text('주월간 리포트'), findsOneWidget);
 
     // 테스트 기본 폰트(고정폭)는 한글을 실제(Pretendard)보다 넓게 측정하여
     // ChipCard 2열 레이아웃에서 RenderFlex 오버플로우가 발생할 수 있다.
