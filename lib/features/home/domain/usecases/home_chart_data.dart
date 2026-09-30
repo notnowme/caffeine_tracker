@@ -12,12 +12,13 @@ class GetCaffeineChartDataUseCase {
   Future<List<FlSpot>> execute({
     required Gender gender,
     required bool smoking,
+    DateTime? now,
   }) async {
-    final now = DateTime.now();
-    final from = now.subtract(const Duration(hours: 12));
+    final current = now ?? DateTime.now();
+    final from = current.subtract(const Duration(hours: 12));
 
     // 12시간 내 기록 조회
-    final records = await repo.getRecordsByRange(from: from, to: now);
+    final records = await repo.getRecordsByRange(from: from, to: current);
 
     final item = records.map((e) => e.record);
 
